@@ -26,10 +26,20 @@ public class EntityBoneArrow extends EntityTerraArrow{
 	}
 	@Override
 	public ItemStack pickupItem(){
-		return new ItemStack( ItemManager.Arrow, 1, 0 );
+		return new ItemStack( ItemManager.Arrow, 1, 1 );
 	}
 	@Override
 	public double getDamageFromConfiguration(){
 		return TerraBowSettings.BoneArrowDamage;
 	}
+    //TerraBow method
+	@Override
+    public ItemStack arrowDrop(){
+    	return this.pickupItem();
+    }
+    //TerraBow method
+	@Override
+    public ItemStack arrowheadDrop(){
+    	return new ItemStack( ItemManager.Arrowhead, 1, 1 );
+    }
 }

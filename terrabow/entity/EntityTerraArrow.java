@@ -13,6 +13,7 @@ import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IProjectile;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -316,8 +317,7 @@ public class EntityTerraArrow extends Entity implements IProjectile{
 
                     if (movingObjectPosition.entityHit.attackEntityFrom(damageSource, i1)){
                     	
-                        if (movingObjectPosition.entityHit instanceof EntityLiving)
-                        {
+                        if (movingObjectPosition.entityHit instanceof EntityLiving){
                             EntityLiving entityLiving = (EntityLiving)movingObjectPosition.entityHit;
 
                             if (!this.worldObj.isRemote){
@@ -345,6 +345,15 @@ public class EntityTerraArrow extends Entity implements IProjectile{
 
                         if (!(movingObjectPosition.entityHit instanceof EntityEnderman)){
                             this.setDead();
+                            //Terrabowmod spawn an arrow or arrowhead after striking a living entity
+                            if( !this.worldObj.isRemote ){
+	                            if( this.rand.nextDouble() <= TerraBowSettings.ChanceToDropArrow ){
+	                            	this.worldObj.spawnEntityInWorld( new EntityItem( this.worldObj, this.posX, this.posY, this.posZ, this.arrowDrop() ) );
+	                            }
+	                            else if( this.rand.nextDouble() <= TerraBowSettings.ChanceToDropArrowhead ){
+	                            	this.worldObj.spawnEntityInWorld( new EntityItem( this.worldObj, this.posX, this.posY, this.posZ, this.arrowheadDrop() ) );
+	                            }
+                            }
                         }
                     }
                     else{
@@ -529,5 +538,13 @@ public class EntityTerraArrow extends Entity implements IProjectile{
     	float affectedSpeed = ( speed - baseSpeed ) * this.durabilityRatio;
     	
     	return ( baseSpeed + affectedSpeed );
+    }
+    //TerraBow method
+    public ItemStack arrowDrop(){
+    	return null;
+    }
+    //TerraBow method
+    public ItemStack arrowheadDrop(){
+    	return null;
     }
 }

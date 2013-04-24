@@ -10,6 +10,7 @@ import terrabow.manager.ItemManager;
 import terrabow.manager.RecipeManager;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
+import cpw.mods.fml.common.Mod.PostInit;
 import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -19,7 +20,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod( modid = "TerraBow", name="TerraBow", version = "0.4" )
+@Mod( modid = "TerraBow", name="TerraBow", version = "0.6" )
 @NetworkMod( clientSideRequired = true, serverSideRequired = false )
 
 public class TerraBowMod {
@@ -32,7 +33,6 @@ public class TerraBowMod {
 		Configuration config = new Configuration( event.getSuggestedConfigurationFile() );
 		TerraBowSettings.config( config );
 		config.save();
-		PlayerAPI.register( "TerraBow", TerraBowPlayerBase.class );
 	}
 	
 	//TODO NEXT: Obsidian arrows?
@@ -58,5 +58,9 @@ public class TerraBowMod {
 		RecipeManager.RegisterItemHeat();
 		
 		GameRegistry.registerCraftingHandler( new CraftingHandler() );
+	}
+	@PostInit
+	public void modsLoaded(){
+		PlayerAPI.register( "TerraBow", TerraBowPlayerBase.class );
 	}
 }

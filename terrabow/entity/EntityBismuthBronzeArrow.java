@@ -32,4 +32,14 @@ public class EntityBismuthBronzeArrow extends EntityTerraArrow{
 	public double getDamageFromConfiguration(){
 		return TerraBowSettings.BismuthBronzeArrowDamage;
 	}
+    //TerraBow method
+	@Override
+    public ItemStack arrowDrop(){
+    	return this.pickupItem();
+    }
+    //TerraBow method
+	@Override
+    public ItemStack arrowheadDrop(){
+    	return new ItemStack( ItemManager.Arrowhead, 1, 3 );
+    }
 }

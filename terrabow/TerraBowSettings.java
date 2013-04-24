@@ -12,6 +12,8 @@ public class TerraBowSettings {
 	public static int ArrowHeadsFromKnapping = 2;
 	public static int ArrowHeadsFromRods = 16;
 	public static int GlueBottleMaxUses = 256;
+	public static double ChanceToDropArrow = 0.1d;
+	public static double ChanceToDropArrowhead = 0.9d;
 	
 	//Stack limits
 	public static int StackLimitArrows = 32;
@@ -137,6 +139,8 @@ public class TerraBowSettings {
 		GlueBottleMaxUses = config.get( "Miscellaneous", "GlueBottleMaxUses", GlueBottleMaxUses ).getInt();
 		BowConditionArrowSpeedRatio = config.get( "Miscellaneous", "BowConditionAffectsArrowSpeedRatio", BowConditionArrowSpeedRatio ).getDouble( BowConditionArrowSpeedRatio );
 		BowConditionArrowDamageRatio = config.get( "Miscellaneous", "BowConditionAffectsArrowDamageRatio", BowConditionArrowDamageRatio ).getDouble( BowConditionArrowDamageRatio );
+		ChanceToDropArrow = config.get( "Miscellaneous", "ChanceToDropArrow", ChanceToDropArrow ).getDouble( ChanceToDropArrow );
+		ChanceToDropArrowhead = config.get( "Miscellaneous", "ChanceToDropArrowhead", ChanceToDropArrowhead ).getDouble( ChanceToDropArrowhead );
 		
 		//Stack Limits
 		StackLimitMetalRods = config.get( "Stack Limits", "StackLimitMetalRods", StackLimitMetalRods ).getInt();
