@@ -20,7 +20,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod( modid = "TerraBow", name="TerraBow", version = "0.6" )
+@Mod( modid = "TerraBow", name="TerraBow", version = "0.7" )
 @NetworkMod( clientSideRequired = true, serverSideRequired = false )
 
 public class TerraBowMod {
